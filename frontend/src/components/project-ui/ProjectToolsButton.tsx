@@ -68,6 +68,21 @@ export default function ProjectToolsButton() {
                 </Select>
             </div>
             <div className="flex justify-between items-center mb-4">
+                <p>Font</p>
+                <Select>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Inter" style={{ fontFamily: "inter, serif" }}>Inter</SelectItem>
+                        <SelectItem value="Roboto" style={{ fontFamily: "roboto, serif" }}>Roboto</SelectItem>
+                        <SelectItem value="Railway" style={{ fontFamily: "railway, serif" }}>Railway</SelectItem>
+                        <SelectItem value="Rubik" style={{ fontFamily: "rubik, serif" }}>Rubik</SelectItem>
+                        <SelectItem value="Lora" style={{ fontFamily: "lora, serif" }}>Lora</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div className="flex justify-between items-center mb-4">
                 <p>Font Weight</p>
                 <Select>
                     <SelectTrigger className="w-[180px]">

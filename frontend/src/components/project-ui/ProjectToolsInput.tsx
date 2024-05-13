@@ -68,7 +68,7 @@ export default function ProjectToolsInput() {
                 </Select>
             </div>
             <div className="flex justify-between items-center mb-4">
-                <p>Font</p>
+                <p>Hero Font</p>
                 <Select>
                     <SelectTrigger className="w-[180px]">
                         <SelectValue placeholder="Type" />
@@ -100,6 +100,36 @@ export default function ProjectToolsInput() {
             <div className="flex flex-col justify-between mb-4">
                 <p>Hero Text</p>
                 <Textarea style={{ resize: "none" }} value={heroText} onChange={(e) => setHeroText(e.target.value)} />
+            </div>
+            <div className="flex justify-between items-center mb-4">
+                <p>Sub Font</p>
+                <Select>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Inter" style={{ fontFamily: "inter, serif" }}>Inter</SelectItem>
+                        <SelectItem value="Roboto" style={{ fontFamily: "roboto, serif" }}>Roboto</SelectItem>
+                        <SelectItem value="Railway" style={{ fontFamily: "railway, serif" }}>Railway</SelectItem>
+                        <SelectItem value="Rubik" style={{ fontFamily: "rubik, serif" }}>Rubik</SelectItem>
+                        <SelectItem value="Lora" style={{ fontFamily: "lora, serif" }}>Lora</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div className="flex justify-between items-center mb-4">
+                <p>Font Weight</p>
+                <Select>
+                    <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Thin">Thin</SelectItem>
+                        <SelectItem value="Normal">Normal</SelectItem>
+                        <SelectItem value="Medium">Medium</SelectItem>
+                        <SelectItem value="Bold">Bold</SelectItem>
+                        <SelectItem value="Black">Black</SelectItem>
+                    </SelectContent>
+                </Select>
             </div>
             <div className="flex flex-col justify-between mb-4">
                 <p>Sub Text</p>

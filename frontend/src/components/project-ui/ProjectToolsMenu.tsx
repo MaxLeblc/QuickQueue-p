@@ -7,7 +7,6 @@ import ProjectToolsPresets from "@/components/project-ui/ProjectToolsPresets"
 
 export default function ProjectToolsMenu() {
     const [selectedTool, setSelectedTool] = useState<string>("Input")
-    console.log("🚀 ~ ProjectToolsMenu ~ selectedTool:", selectedTool)
 
     const renderTool = () => {
         switch (selectedTool) {
