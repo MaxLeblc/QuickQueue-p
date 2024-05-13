@@ -1,13 +1,11 @@
-const { fontFamily } = require("tailwindcss/defaultTheme")
+import type { Config } from "tailwindcss"
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
-    './src/app/**/*.{ts.tsx}',
     './src/**/*.{ts,tsx}',
   ],
   prefix: "",
@@ -20,10 +18,12 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        'comfortaa': ['Comfortaa', 'sans-serif'],
+        'raleway': ['Raleway', 'sans-serif'],
+        'cabin': ['Cabin', 'sans-serif'],
+      },
       colors: {
-        fontFamily: {
-          sans: ["var(--font-sans)", ...fontFamily.sans],
-        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -57,6 +57,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "custom-amber" : "#F8A400",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,4 +81,6 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+} satisfies Config
+
+export default config

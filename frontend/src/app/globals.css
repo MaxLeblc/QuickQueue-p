@@ -1,3 +1,11 @@
+@import 'typeface-raleway';
+@import 'typeface-comfortaa';
+@import 'typeface-cabin';
+@import 'typeface-inter';
+@import 'typeface-roboto';
+@import 'typeface-rubik';
+@import 'typeface-lora';
+
 @tailwind base;
   @tailwind components;
   @tailwind utilities;
