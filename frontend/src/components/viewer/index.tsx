@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-export default function Displayer() {
+export default function Viewer() {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const handleFile = () => {
@@ -21,7 +21,7 @@ export default function Displayer() {
                 <Avatar className={cn("w-20 h-20 mb-8")}>
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>CN</AvatarFallback>
-                    <Input id="picture" type="file" ref={inputRef} style={{ display: "none" }} />
+                    <Input id="picture" type="file" ref={inputRef} className="hidden" />
                 </Avatar>
             </div>
             <h1 className="font-bold text-4xl">Titrage du Titre</h1>

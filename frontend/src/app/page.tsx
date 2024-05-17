@@ -21,7 +21,7 @@ export default function Home() {
             <Link href="/about">How It Works</Link>
           </div>
           <div className="flex px-3 py-2 w-fit justify-around gap-10 max-sm:gap-5 items-center max-sm:hidden">
-            <Link href="/dashboard" className="bg-custom-amber justify-between p-3 px-5 font-bold text-black rounded-lg hover:scale-105 transition-all ease-in-out">Quick Start</Link>
+            <Link href="/login/dashboard" className="bg-custom-amber justify-between p-3 px-5 font-bold text-black rounded-lg hover:scale-105 transition-all ease-in-out">Quick Start</Link>
           </div>
         </div>
         <div className="flex flex-col justify-center  mx-auto px-8 py-8">

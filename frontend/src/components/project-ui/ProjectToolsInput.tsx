@@ -9,32 +9,54 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 
 export default function ProjectToolsInput() {
-    const [placeholderColor, setPlaceholderColor] = useState("#000000")
-    const [inputBorderColor, setInputBorderColor] = useState("#000000")
-    const [titleColor, setTitleColor] = useState("#000000")
-    const [textColor, setTextColor] = useState("#000000")
+    // const [placeholderColor, setPlaceholderColor] = useState("#000000")
+    // const [inputBorderColor, setInputBorderColor] = useState("#000000")
+    // const [titleColor, setTitleColor] = useState("#000000")
+    // const [textColor, setTextColor] = useState("#000000")
 
-    const [heroText, setHeroText] = useState("Signup to our waitlist")
-    const [subText, setSubText] = useState("Get exclusive news, latest updates, and exceptional discounts. Join the list!")
-    const [placeholderText, setPlaceholderText] = useState("Add your email")
+    // const [heroText, setHeroText] = useState("Signup to our waitlist")
+    // const [subText, setSubText] = useState("Get exclusive news, latest updates, and exceptional discounts. Join the list!")
+    // const [placeholderText, setPlaceholderText] = useState("Add your email")
+
+    const [state, setState] = useState({
+        backgroundColor: "#000000",
+        titleColor: "#000000",
+        textColor: "#000000",
+        placeholderColor: "#000000",
+        inputBorderColor: "#000000",
+        heroText: "Signup to our waitlist",
+        subText: "Get exclusive news, latest updates, and exceptional discounts. Join the list!",
+        placeholderText: "Add your email"
+    })
+
+    const { backgroundColor, titleColor, textColor, placeholderColor, inputBorderColor, heroText, subText, placeholderText } = state
 
     return (
         <div className="flex flex-col ">
             <div className="flex justify-between items-center mb-4">
+                <p>Background Color</p>
+                {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} /> */}
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={backgroundColor} onChange={(e) => setState(prevState => ({ ...prevState, backgroundColor: e.target.value }))} />
+            </div>
+            <div className="flex justify-between items-center mb-4">
                 <p>Title Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={titleColor} onChange={(e) => setTitleColor(e.target.value)} />
+                {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={titleColor} onChange={(e) => setTitleColor(e.target.value)} /> */}
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={titleColor} onChange={(e) => setState(prevState => ({ ...prevState, titleColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Text Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} />
+                {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} /> */}
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={textColor} onChange={(e) => setState(prevState => ({ ...prevState, textColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Placeholder Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={placeholderColor} onChange={(e) => setPlaceholderColor(e.target.value)} />
+                {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={placeholderColor} onChange={(e) => setPlaceholderColor(e.target.value)} /> */}
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={placeholderColor} onChange={(e) => setState(prevState => ({ ...prevState, placeholderColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Border Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={inputBorderColor} onChange={(e) => setInputBorderColor(e.target.value)} />
+                {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={inputBorderColor} onChange={(e) => setInputBorderColor(e.target.value)} /> */}
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={inputBorderColor} onChange={(e) => setState(prevState => ({ ...prevState, inputBorderColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Border Width</p>

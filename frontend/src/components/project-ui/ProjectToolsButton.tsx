@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { ProjectEditorContext } from "../projectEditor"
 import {
     Select,
     SelectContent,
@@ -10,31 +11,40 @@ import { Textarea } from "@/components/ui/textarea"
 import { Switch } from "@/components/ui/switch"
 
 export default function ProjectToolsButton() {
-    const [buttonColor, setButtonColor] = useState("#000000")
-    const [buttonBorderColor, setButtonBorderColor] = useState("#000000")
-    const [buttonTextColor, setButtonTextColor] = useState("#000000")
-    const [backgroundColor, setBackgroundColor] = useState("#000000")
+    // const [buttonColor, setButtonColor] = useState("#000000")
+    // const [buttonBorderColor, setButtonBorderColor] = useState("#000000")
+    // const [buttonTextColor, setButtonTextColor] = useState("#000000")
 
-    const [buttonText, setButtonText] = useState("Button")
-    const [successMessage, setSuccessMessage] = useState("You're on the waitlist!")
+    // const [buttonText, setButtonText] = useState("Button")
+    // const [successMessage, setSuccessMessage] = useState("You're on the waitlist!")
+
+    // const [state, setState] = useState({
+    //     buttonColor: "#000000",
+    //     buttonBorderColor: "#000000",
+    //     buttonTextColor: "#000000",
+    //     buttonText: "Button",
+    //     successMessage: "You're on the waitlist!"
+    // })
+
+    // const { buttonColor, buttonBorderColor, buttonTextColor, buttonText, successMessage } = state
+    const { state, setState } = useContext(ProjectEditorContext)
 
     return (
         <div className="flex flex-col ">
             <div className="flex justify-between items-center mb-4">
                 <p>Button Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonColor} onChange={(e) => setButtonColor(e.target.value)} />
+                {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonColor} onChange={(e) => setButtonColor(e.target.value)} /> */}
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonColor} onChange={(e) => setState(prevState => ({ ...prevState, buttonColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Button Border</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonBorderColor} onChange={(e) => setButtonBorderColor(e.target.value)} />
+                {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonBorderColor} onChange={(e) => setButtonBorderColor(e.target.value)} /> */}
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonBorderColor} onChange={(e) => setState(prevState => ({ ...prevState, buttonBorderColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Button Text Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonTextColor} onChange={(e) => setButtonTextColor(e.target.value)} />
-            </div>
-            <div className="flex justify-between items-center mb-4">
-                <p>Background Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} />
+                {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonTextColor} onChange={(e) => setButtonTextColor(e.target.value)} /> */}
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={buttonTextColor} onChange={(e) => setState(prevState => ({ ...prevState, buttonTextColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Border Width</p>
@@ -99,11 +109,13 @@ export default function ProjectToolsButton() {
             </div>
             <div className="flex flex-col justify-between mb-4">
                 <p>Button Text</p>
-                <Textarea style={{ resize: "none" }} value={buttonText} onChange={(e) => setButtonText(e.target.value)} />
+                {/* <Textarea style={{ resize: "none" }} value={buttonText} onChange={(e) => setButtonText(e.target.value)} /> */}
+                <Textarea style={{ resize: "none" }} value={buttonText} onChange={(e) => setState(prevState => ({ ...prevState, buttonText: e.target.value }))} />
             </div>
             <div className="flex flex-col justify-between mb-4">
                 <p>Success Message</p>
-                <Textarea style={{ resize: "none" }} value={successMessage} onChange={(e) => setSuccessMessage(e.target.value)} />
+                {/* <Textarea style={{ resize: "none" }} value={successMessage} onChange={(e) => setSuccessMessage(e.target.value)} /> */}
+                <Textarea style={{ resize: "none" }} value={successMessage} onChange={(e) => setState(prevState => ({ ...prevState, successMessage: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Show Logo</p>
