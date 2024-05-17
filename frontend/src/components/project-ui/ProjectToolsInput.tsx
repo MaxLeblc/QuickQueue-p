@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useProjectEditorContext } from "../projectEditor"
 import {
     Select,
     SelectContent,
@@ -18,45 +19,46 @@ export default function ProjectToolsInput() {
     // const [subText, setSubText] = useState("Get exclusive news, latest updates, and exceptional discounts. Join the list!")
     // const [placeholderText, setPlaceholderText] = useState("Add your email")
 
-    const [state, setState] = useState({
-        backgroundColor: "#000000",
-        titleColor: "#000000",
-        textColor: "#000000",
-        placeholderColor: "#000000",
-        inputBorderColor: "#000000",
-        heroText: "Signup to our waitlist",
-        subText: "Get exclusive news, latest updates, and exceptional discounts. Join the list!",
-        placeholderText: "Add your email"
-    })
+    // const [state, setState] = useState({
+    //     backgroundColor: "#000000",
+    //     titleColor: "#000000",
+    //     textColor: "#000000",
+    //     placeholderColor: "#000000",
+    //     inputBorderColor: "#000000",
+    //     heroText: "Signup to our waitlist",
+    //     subText: "Get exclusive news, latest updates, and exceptional discounts. Join the list!",
+    //     placeholderText: "Add your email"
+    // })
 
-    const { backgroundColor, titleColor, textColor, placeholderColor, inputBorderColor, heroText, subText, placeholderText } = state
+    // const { backgroundColor, titleColor, textColor, placeholderColor, inputBorderColor, heroText, subText, placeholderText } = state
+    const { state, setState } = useProjectEditorContext()
 
     return (
         <div className="flex flex-col ">
             <div className="flex justify-between items-center mb-4">
                 <p>Background Color</p>
                 {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} /> */}
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={backgroundColor} onChange={(e) => setState(prevState => ({ ...prevState, backgroundColor: e.target.value }))} />
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.backgroundColor} onChange={(e) => setState(prevState => ({ ...prevState, backgroundColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Title Color</p>
                 {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={titleColor} onChange={(e) => setTitleColor(e.target.value)} /> */}
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={titleColor} onChange={(e) => setState(prevState => ({ ...prevState, titleColor: e.target.value }))} />
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.titleColor} onChange={(e) => setState(prevState => ({ ...prevState, titleColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Text Color</p>
                 {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} /> */}
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={textColor} onChange={(e) => setState(prevState => ({ ...prevState, textColor: e.target.value }))} />
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.textColor} onChange={(e) => setState(prevState => ({ ...prevState, textColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Placeholder Color</p>
                 {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={placeholderColor} onChange={(e) => setPlaceholderColor(e.target.value)} /> */}
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={placeholderColor} onChange={(e) => setState(prevState => ({ ...prevState, placeholderColor: e.target.value }))} />
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.placeholderColor} onChange={(e) => setState(prevState => ({ ...prevState, placeholderColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Border Color</p>
                 {/* <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={inputBorderColor} onChange={(e) => setInputBorderColor(e.target.value)} /> */}
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={inputBorderColor} onChange={(e) => setState(prevState => ({ ...prevState, inputBorderColor: e.target.value }))} />
+                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.inputBorderColor} onChange={(e) => setState(prevState => ({ ...prevState, inputBorderColor: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Border Width</p>
@@ -121,7 +123,7 @@ export default function ProjectToolsInput() {
             </div>
             <div className="flex flex-col justify-between mb-4">
                 <p>Hero Text</p>
-                <Textarea style={{ resize: "none" }} value={heroText} onChange={(e) => setHeroText(e.target.value)} />
+                <Textarea style={{ resize: "none" }} value={state.heroText} onChange={(e) => setState(prevState => ({ ...prevState, heroText: e.target.value }))} />
             </div>
             <div className="flex justify-between items-center mb-4">
                 <p>Sub Font</p>
@@ -155,11 +157,11 @@ export default function ProjectToolsInput() {
             </div>
             <div className="flex flex-col justify-between mb-4">
                 <p>Sub Text</p>
-                <Textarea style={{ resize: "none", height: "80px" }} value={subText} onChange={(e) => setSubText(e.target.value)} />
+                <Textarea style={{ resize: "none", height: "80px" }} value={state.subText} onChange={(e) => setState(prevState => ({ ...prevState, subText: e.target.value }))} />
             </div>
             <div className="flex flex-col justify-between mb-4">
                 <p>Placeholder Text</p>
-                <Textarea style={{ resize: "none" }} value={placeholderText} onChange={(e) => setPlaceholderText(e.target.value)} />
+                <Textarea style={{ resize: "none" }} value={state.placeholderText} onChange={(e) => setState(prevState => ({ ...prevState, placeholderText: e.target.value }))} />
             </div>
         </div>
     )

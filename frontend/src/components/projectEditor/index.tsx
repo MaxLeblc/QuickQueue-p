@@ -23,7 +23,7 @@ interface ProjectEditorContextType {
 
 const ProjectEditorContext = createContext<ProjectEditorContextType | undefined>(undefined)
 
-const useProjectEditorContext = () => {
+export const useProjectEditorContext = () => {
     const context = useContext(ProjectEditorContext)
     if (!context) {
         throw new Error("useProjectEditorContext must be used within a ProjectEditor")
