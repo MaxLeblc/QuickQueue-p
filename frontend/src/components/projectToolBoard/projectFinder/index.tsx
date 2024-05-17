@@ -1,4 +1,4 @@
-import Combobox from "../combobox"
+import Combobox from "../../combobox"
 
 export default function ProjectFinder() {
     return (

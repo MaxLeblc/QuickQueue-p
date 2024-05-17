@@ -30,14 +30,7 @@
     "react-dom": "^18",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7",
-    "typeface-cabin": "^1.1.13",
-    "typeface-comfortaa": "^1.1.13",
-    "typeface-inter": "^3.18.1",
-    "typeface-lora": "^1.1.13",
-    "typeface-raleway": "^1.1.13",
-    "typeface-roboto": "^1.1.13",
-    "typeface-rubik": "^1.1.13"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",

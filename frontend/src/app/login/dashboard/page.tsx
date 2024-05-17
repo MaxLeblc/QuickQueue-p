@@ -1,11 +1,11 @@
 import { ProjectEditorProvider } from "@/components/projectEditor"
-import ProjectFinder from "@/components/project-ui/ProjectFinder"
-import ProjectToolsMenu from "@/components/project-ui/ProjectToolsMenu"
+import ProjectFinder from "@/components/projectToolBoard/projectFinder"
+import ProjectToolsMenu from "@/components/projectToolBoard/projectToolsMenu"
 import Settings from "@/components/settings"
 import Viewer from "@/components/viewer"
 
-
 export default function Dashboard() {
+
     return (
         <ProjectEditorProvider>
             <div className="w-full h-full">

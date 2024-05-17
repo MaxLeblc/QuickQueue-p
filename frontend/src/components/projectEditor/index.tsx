@@ -4,27 +4,28 @@ import React, { ReactNode, createContext, useContext, useState } from "react"
 
 interface ProjectEditorContextType {
     state: {
+        projectName: string;
         backgroundColor: string;
         titleColor: string;
         textColor: string;
         placeholderColor: string;
         inputBorderColor: string;
-        inputBorderWidth: string[];
-        inputBorderRadius: string[];
-        heroFont: string[];
-        heroFontWeight: string[];
+        inputBorderWidth: string;
+        inputBorderRadius: string;
+        heroFont: string;
+        heroFontWeight: string;
         heroText: string;
-        subFont: string[];
-        subFontWeight: string[];
+        subFont: string;
+        subFontWeight: string;
         subText: string;
         placeholderText: string;
         buttonColor: string;
         buttonBorderColor: string;
         buttonTextColor: string;
-        buttonBorderWidth: string[];
-        buttonBorderRadius: string[];
-        buttonFont: string[];
-        buttonFontWeight: string[];
+        buttonBorderWidth: string;
+        buttonBorderRadius: string;
+        buttonFont: string;
+        buttonFontWeight: string;
         buttonText: string;
         successMessage: string;
         showLogo: boolean;
@@ -48,28 +49,29 @@ interface ProjectEditorProps {
 
 export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
     const [state, setState] = useState<ProjectEditorContextType["state"]>({
-        backgroundColor: "#000000",
+        projectName: "Project Name",
+        backgroundColor: "#E3E3E3",
         titleColor: "#000000",
         textColor: "#000000",
-        placeholderColor: "#000000",
+        placeholderColor: "#ffffff",
         inputBorderColor: "#000000",
-        inputBorderWidth: ["0px", "1px", "2px", "4px", "8px"],
-        inputBorderRadius: ["None", "Small", "Medium", "Large", "XL", "Full"],
-        heroFont: ["Inter", "Roboto", "Railway", "Rubik", "Lora"],
-        heroFontWeight: ["thin", "Normal", "Medium", "Bold", "Black"],
+        inputBorderWidth: "0px",
+        inputBorderRadius: "0",
+        heroFont: "inter",
+        heroFontWeight: "400",
         heroText: "Signup to our waitlist",
-        subFont: ["Inter", "Roboto", "Railway", "Rubik", "Lora"],
-        subFontWeight: ["thin", "Normal", "Medium", "Bold", "Black"],
+        subFont: "inter",
+        subFontWeight: "400",
         subText: "Get exclusive news, latest updates, and exceptional discounts. Join the list!",
         placeholderText: "Add your email",
         buttonColor: "#000000",
         buttonBorderColor: "#000000",
-        buttonTextColor: "#000000",
-        buttonBorderWidth: ["0px", "1px", "2px", "4px", "8px"],
-        buttonBorderRadius: ["None", "Small", "Medium", "Large", "XL", "Full"],
-        buttonFont: ["Inter", "Roboto", "Railway", "Rubik", "Lora"],
-        buttonFontWeight: ["thin", "Normal", "Medium", "Bold", "Black"],
-        buttonText: "Button",
+        buttonTextColor: "#ffffff",
+        buttonBorderWidth: "0px",
+        buttonBorderRadius: "O",
+        buttonFont: "inter",
+        buttonFontWeight: "400",
+        buttonText: "Submit",
         successMessage: "You're on the waitlist!",
         showLogo: true,
     })

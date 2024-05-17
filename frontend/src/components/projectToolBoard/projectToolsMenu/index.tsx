@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import ProjectToolsInput from "@/components/project-ui/ProjectToolsInput"
-import ProjectToolsButton from "@/components/project-ui/ProjectToolsButton"
-import ProjectToolsPresets from "@/components/project-ui/ProjectToolsPresets"
+import ProjectToolsInput from "../projectToolsInput"
+import ProjectToolsButton from "../projectToolsButton"
+import ProjectToolsPresets from "../projectToolsPresets"
 
 export default function ProjectToolsMenu() {
     const [selectedTool, setSelectedTool] = useState<string>("Input")
