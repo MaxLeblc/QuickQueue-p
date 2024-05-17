@@ -9,14 +9,25 @@ interface ProjectEditorContextType {
         textColor: string;
         placeholderColor: string;
         inputBorderColor: string;
+        inputBorderWidth: string[];
+        inputBorderRadius: string[];
+        heroFont: string[];
+        heroFontWeight: string[];
         heroText: string;
+        subFont: string[];
+        subFontWeight: string[];
         subText: string;
         placeholderText: string;
         buttonColor: string;
         buttonBorderColor: string;
         buttonTextColor: string;
+        buttonBorderWidth: string[];
+        buttonBorderRadius: string[];
+        buttonFont: string[];
+        buttonFontWeight: string[];
         buttonText: string;
         successMessage: string;
+        showLogo: boolean;
     };
     setState: React.Dispatch<React.SetStateAction<ProjectEditorContextType["state"]>>;
 }
@@ -42,14 +53,25 @@ export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
         textColor: "#000000",
         placeholderColor: "#000000",
         inputBorderColor: "#000000",
+        inputBorderWidth: ["0px", "1px", "2px", "4px", "8px"],
+        inputBorderRadius: ["None", "Small", "Medium", "Large", "XL", "Full"],
+        heroFont: ["Inter", "Roboto", "Railway", "Rubik", "Lora"],
+        heroFontWeight: ["thin", "Normal", "Medium", "Bold", "Black"],
         heroText: "Signup to our waitlist",
+        subFont: ["Inter", "Roboto", "Railway", "Rubik", "Lora"],
+        subFontWeight: ["thin", "Normal", "Medium", "Bold", "Black"],
         subText: "Get exclusive news, latest updates, and exceptional discounts. Join the list!",
         placeholderText: "Add your email",
         buttonColor: "#000000",
         buttonBorderColor: "#000000",
         buttonTextColor: "#000000",
+        buttonBorderWidth: ["0px", "1px", "2px", "4px", "8px"],
+        buttonBorderRadius: ["None", "Small", "Medium", "Large", "XL", "Full"],
+        buttonFont: ["Inter", "Roboto", "Railway", "Rubik", "Lora"],
+        buttonFontWeight: ["thin", "Normal", "Medium", "Bold", "Black"],
         buttonText: "Button",
-        successMessage: "You're on the waitlist!"
+        successMessage: "You're on the waitlist!",
+        showLogo: true,
     })
 
     // fetch and save project here

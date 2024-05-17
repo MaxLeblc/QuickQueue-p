@@ -1,4 +1,4 @@
-import { ProjectEditor } from "@/components/projectEditor"
+import { ProjectEditorProvider } from "@/components/projectEditor"
 import ProjectFinder from "@/components/project-ui/ProjectFinder"
 import ProjectToolsMenu from "@/components/project-ui/ProjectToolsMenu"
 import Settings from "@/components/settings"
@@ -7,7 +7,7 @@ import Viewer from "@/components/viewer"
 
 export default function Dashboard() {
     return (
-        <ProjectEditor>
+        <ProjectEditorProvider>
             <div className="w-full h-full">
                 <div className="grid grid-cols-12 grid-flow-col gap-4 h-screen">
                     <div className="col-span-2 flex justify-center min-w-80 border-r border-gray-300">
@@ -25,7 +25,7 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-        </ProjectEditor>
+        </ProjectEditorProvider>
     )
 }
 
