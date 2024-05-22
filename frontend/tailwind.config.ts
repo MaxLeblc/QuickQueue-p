@@ -57,7 +57,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "custom-amber" : "#F8A400",
+        "custom-amber": "#F8A400",
       },
       borderRadius: {
         lg: "var(--radius)",

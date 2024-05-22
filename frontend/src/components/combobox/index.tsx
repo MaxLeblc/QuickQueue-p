@@ -1,6 +1,6 @@
 "use client"
 
-import * as React from "react"
+import { useState } from "react"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
@@ -18,7 +18,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-const frameworks = [
+interface Framework {
+  value: string
+  label: string
+}
+
+const frameworks: Framework[] = [
   {
     value: "next.js",
     label: "Next.js",
@@ -42,8 +47,8 @@ const frameworks = [
 ]
 
 export default function Combobox() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+  const [open, setOpen] = useState<boolean>(false)
+  const [value, setValue] = useState<string>("")
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

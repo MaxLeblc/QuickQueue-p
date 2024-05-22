@@ -1,6 +1,8 @@
 "use client"
 
-import React, { ReactNode, createContext, useContext, useState } from "react"
+import React, { ReactNode, createContext, useContext, useState, useEffect } from "react"
+import axios from "axios"
+import useSWR, { mutate } from "swr"
 
 interface ProjectEditorContextType {
     state: {
@@ -28,6 +30,7 @@ interface ProjectEditorContextType {
         buttonFontWeight: string;
         buttonText: string;
         successMessage: string;
+        logo: string;
         showLogo: boolean;
     };
     setState: React.Dispatch<React.SetStateAction<ProjectEditorContextType["state"]>>;
@@ -50,7 +53,7 @@ interface ProjectEditorProps {
 export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
     const [state, setState] = useState<ProjectEditorContextType["state"]>({
         projectName: "Project Name",
-        backgroundColor: "#E3E3E3",
+        backgroundColor: "",
         titleColor: "#000000",
         textColor: "#000000",
         placeholderColor: "#ffffff",
@@ -73,10 +76,32 @@ export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
         buttonFontWeight: "400",
         buttonText: "Submit",
         successMessage: "You're on the waitlist!",
+        logo: "https://github.com/shadcn.png",
         showLogo: true,
     })
 
     // fetch and save project here
+    const saveState = async () => {
+        try {
+            const response = await axios.post("/api/save", state)
+            console.log("Axios response", response)
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        saveState()
+    }, [state])
+
+    const { data, error } = useSWR("/api/get", url => axios.get(url).then(res => res.data))
+
+    useEffect(() => {
+        if (data) {
+            setState(data)
+        }
+    }, [data])
 
     return (
         <ProjectEditorContext.Provider value={{

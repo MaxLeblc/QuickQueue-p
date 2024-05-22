@@ -1,4 +1,4 @@
-import { useProjectEditorContext } from "@/components/projectEditor"
+import { useProjectEditorContext } from "@/components/context/projectEditorContext"
 import {
     Select,
     SelectContent,
