@@ -58,7 +58,7 @@ export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
         textColor: "#000000",
         placeholderColor: "#ffffff",
         inputBorderColor: "#000000",
-        inputBorderWidth: "0px",
+        inputBorderWidth: "1px",
         inputBorderRadius: "0",
         heroFont: "inter",
         heroFontWeight: "400",
@@ -70,7 +70,7 @@ export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
         buttonColor: "#000000",
         buttonBorderColor: "#000000",
         buttonTextColor: "#ffffff",
-        buttonBorderWidth: "0px",
+        buttonBorderWidth: "1px",
         buttonBorderRadius: "O",
         buttonFont: "inter",
         buttonFontWeight: "400",
@@ -81,27 +81,27 @@ export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
     })
 
     // fetch and save project here
-    const saveState = async () => {
-        try {
-            const response = await axios.post("/api/save", state)
-            console.log("Axios response", response)
+    // const saveState = async () => {
+    //     try {
+    //         const response = await axios.post("/api/save", state)
+    //         console.log("Axios response", response)
 
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+    // }
 
-    useEffect(() => {
-        saveState()
-    }, [state])
+    // useEffect(() => {
+    //     saveState()
+    // }, [state])
 
-    const { data, error } = useSWR("/api/get", url => axios.get(url).then(res => res.data))
+    // const { data, error } = useSWR("/api/get", url => axios.get(url).then(res => res.data))
 
-    useEffect(() => {
-        if (data) {
-            setState(data)
-        }
-    }, [data])
+    // useEffect(() => {
+    //     if (data) {
+    //         setState(data)
+    //     }
+    // }, [data])
 
     return (
         <ProjectEditorContext.Provider value={{

@@ -1,100 +1,78 @@
 import { useProjectEditorContext } from "@/components/context/projectEditorContext"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
+import { debounce } from 'lodash'
+import { ColorInput } from "@/components/uiCustom/colorInput"
+import { SelectInput } from "@/components/uiCustom/selectInput"
+import { TextareaInput } from "@/components/uiCustom/textareaInput"
 import { Switch } from "@/components/ui/switch"
+
+interface ColorState {
+    buttonColor: string;
+    buttonBorderColor: string;
+    buttonTextColor: string;
+}
 
 export default function ProjectToolsButton() {
     const { state, setState } = useProjectEditorContext()
 
+    const handleChangeColor = debounce((newColor: ColorState) => {
+        setState(prevState => ({
+            ...prevState,
+            ...newColor
+        }))
+    }, 100)
+
     return (
         <div className="flex flex-col ">
-            <div className="flex justify-between items-center mb-4">
-                <p>Button Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.buttonColor} onChange={(e) => setState(prevState => ({ ...prevState, buttonColor: e.target.value }))} />
-            </div>
-            <div className="flex justify-between items-center mb-4">
-                <p>Button Border</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.buttonBorderColor} onChange={(e) => setState(prevState => ({ ...prevState, buttonBorderColor: e.target.value }))} />
-            </div>
-            <div className="flex justify-between items-center mb-4">
-                <p>Button Text Color</p>
-                <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.buttonTextColor} onChange={(e) => setState(prevState => ({ ...prevState, buttonTextColor: e.target.value }))} />
-            </div>
-            <div className="flex justify-between items-center mb-4">
-                <p>Border Width</p>
-                <Select defaultValue="0px" onValueChange={(value) => setState(prevState => ({ ...prevState, buttonBorderWidth: value }))}>
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Size" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="0px">0px</SelectItem>
-                        <SelectItem value="1px">1px</SelectItem>
-                        <SelectItem value="2px">2px</SelectItem>
-                        <SelectItem value="4px">4px</SelectItem>
-                        <SelectItem value="8px">8px</SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-                <p>Border Radius</p>
-                <Select defaultValue="0" onValueChange={(value) => setState(prevState => ({ ...prevState, buttonBorderRadius: value }))}>
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Size" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="0">None</SelectItem>
-                        <SelectItem value="4px">Small</SelectItem>
-                        <SelectItem value="6px">Medium</SelectItem>
-                        <SelectItem value="8px">Large</SelectItem>
-                        <SelectItem value="10px">XL</SelectItem>
-                        <SelectItem value="16px">Full</SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-                <p>Font</p>
-                <Select defaultValue="inter" onValueChange={(value) => setState(prevState => ({ ...prevState, buttonFont: value }))}>
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="inter" style={{ fontFamily: "inter, sans-serif" }}>Inter</SelectItem>
-                        <SelectItem value="roboto" style={{ fontFamily: "roboto, sans-serif" }}>Roboto</SelectItem>
-                        <SelectItem value="raleway" style={{ fontFamily: "railway, sans-serif" }}>Railway</SelectItem>
-                        <SelectItem value="rubik" style={{ fontFamily: "rubik, sans-serif" }}>Rubik</SelectItem>
-                        <SelectItem value="lora" style={{ fontFamily: "lora, serif" }}>Lora</SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-                <p>Font Weight</p>
-                <Select defaultValue="400" onValueChange={(value) => setState(prevState => ({ ...prevState, buttonFontWeight: value }))}>
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Size" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="300">Light</SelectItem>
-                        <SelectItem value="400">Normal</SelectItem>
-                        <SelectItem value="500">Medium</SelectItem>
-                        <SelectItem value="700">Bold</SelectItem>
-                        <SelectItem value="900">Black</SelectItem>
-                    </SelectContent>
-                </Select>
-            </div>
-            <div className="flex flex-col justify-between mb-4">
-                <p>Button Text</p>
-                <Textarea style={{ resize: "none" }} value={state.buttonText} onChange={(e) => setState(prevState => ({ ...prevState, buttonText: e.target.value }))} />
-            </div>
-            <div className="flex flex-col justify-between mb-4">
-                <p>Success Message</p>
-                <Textarea style={{ resize: "none" }} value={state.successMessage} onChange={(e) => setState(prevState => ({ ...prevState, successMessage: e.target.value }))} />
-            </div>
+            <ColorInput
+                label="Button Color"
+                color={state.buttonColor}
+                onChange={(value) => handleChangeColor({ ...state, buttonColor: value })}
+            />
+            <ColorInput
+                label="Button Border"
+                color={state.buttonBorderColor}
+                onChange={(value) => handleChangeColor({ ...state, buttonBorderColor: value })}
+            />
+            <ColorInput
+                label="Button Text Color"
+                color={state.buttonTextColor}
+                onChange={(value) => handleChangeColor({ ...state, buttonTextColor: value })}
+            />
+            <SelectInput
+                label="Border Width"
+                defaultValue="1px"
+                options={["0px", "1px", "2px", "4px", "8px"]}
+                onChange={(value) => setState(prevState => ({ ...prevState, buttonBorderWidth: value }))}
+            />
+            <SelectInput
+                label="Border Radius"
+                defaultValue="0"
+                options={["0", "4px", "6px", "8px", "10px", "16px"]}
+                onChange={(value) => setState(prevState => ({ ...prevState, buttonBorderRadius: value }))}
+            />
+            <SelectInput
+                label="Font"
+                defaultValue="inter"
+                options={["inter", "roboto", "raleway", "rubik", "lora"]}
+                onChange={(value) => setState(prevState => ({ ...prevState, buttonFont: value }))}
+            />
+            <SelectInput
+                label="Font Weight"
+                defaultValue="400"
+                options={["300", "400", "500", "700", "900"]}
+                onChange={(value) => setState(prevState => ({ ...prevState, buttonFontWeight: value }))}
+            />
+
+            <TextareaInput
+                label="Button Text"
+                value={state.buttonText}
+                onChange={(e) => setState(prevState => ({ ...prevState, buttonText: e.target.value }))}
+            />
+            <TextareaInput
+                label="Success Message"
+                value={state.successMessage}
+                onChange={(e) => setState(prevState => ({ ...prevState, successMessage: e.target.value }))}
+            />
             <div className="flex justify-between items-center mb-4">
                 <p>Show Logo</p>
                 <Switch checked={state.showLogo} onClick={() => setState(prevState => ({ ...prevState, showLogo: !state.showLogo }))} />
