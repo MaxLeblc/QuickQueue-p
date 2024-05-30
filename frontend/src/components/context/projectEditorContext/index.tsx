@@ -53,7 +53,7 @@ interface ProjectEditorProps {
 export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
     const [state, setState] = useState<ProjectEditorContextType["state"]>({
         projectName: "Project Name",
-        backgroundColor: "",
+        backgroundColor: "#E3E3E3",
         titleColor: "#000000",
         textColor: "#000000",
         placeholderColor: "#ffffff",

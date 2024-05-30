@@ -1,7 +1,7 @@
 export default function ProjectToolsPresets() {
     return (
         <div className="flex flex-col ">
-            <p>coucou</p>
+            <p>Presets will be available with the next update!</p>
         </div>
     )
 }

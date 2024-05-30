@@ -22,7 +22,7 @@ export default function ProjectToolsMenu() {
     }
 
     return (
-        <div className="w-full px-10 py-4">
+        <div className="w-full px-10 py-4 overflow-y-auto h-screen">
             <div className="flex justify-center gap-3 px-4 py-6">
                 <div className="flex gap-4 py-1 px-4 bg-zinc-200 rounded font-medium text-sm">
                     {[

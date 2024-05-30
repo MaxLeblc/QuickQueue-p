@@ -12,7 +12,7 @@ export default function ProjectToolsInput() {
     const { state, setState } = useProjectEditorContext()
 
     return (
-        <div className="flex flex-col ">
+        <div className="flex flex-col overflow-y-visible">
             <div className="flex justify-between items-center mb-4">
                 <p>Background Color</p>
                 <input className="dark:bg-transparent h-8 w-8 cursor-pointer" type="color" value={state.backgroundColor} onChange={(e) => setState(prevState => ({ ...prevState, backgroundColor: e.target.value }))} />

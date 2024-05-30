@@ -9,17 +9,17 @@ export default function Dashboard() {
 
     return (
         <ProjectEditorProvider>
-            <div className="w-full h-full">
-                <div className="grid grid-cols-12 grid-flow-col gap-4 h-screen">
-                    <div className="col-span-2 flex justify-center min-w-80 border-r border-gray-300">
-                        <ul className="w-full min-h-full bg-white flex flex-col items-center">
+            <div className="w-screen h-screen overflow-hidden">
+                <div className="flex">
+                    <div className="flex justify-center min-w-80 border-r border-gray-300">
+                        <ul className="w-full h-screen bg-white flex flex-col items-center">
                             <Settings />
                             <ProjectFinder />
                             {/* <ProjectToolsMenu /> */}
                             <ProjectView view="toolsMenu" />
                         </ul>
                     </div>
-                    <div className="flex justify-center items-center col-start-5 col-end-9">
+                    <div className="flex justify-center items-center w-full">
                         {/* <Viewer /> */}
                         <ProjectView view="viewer" />
                     </div>

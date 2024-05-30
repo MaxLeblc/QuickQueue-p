@@ -13,7 +13,7 @@ export default function Auth() {
 
     return (
         <UserContextProvider>
-            <div className="w-full h-full flex justify-center items-center">
+            <div className="w-full h-screen flex justify-center items-center">
                 <Card>
                     <CardHeader>
                         <CardTitle>Register or Login</CardTitle>

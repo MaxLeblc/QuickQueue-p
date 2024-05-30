@@ -31,16 +31,15 @@ export default function Viewer() {
     }
 
     const { state, setState } = useProjectEditorContext()
-    const hexColor = state.backgroundColor.replace(/[^#0-9a-fA-F]/g, '')
+    // const hexColor = state.backgroundColor.replace(/[^#0-9a-fA-F]/g, '')
     // const hexColor = parseInt(state.backgroundColor)
-    console.log("ici", hexColor)
     
     return (
-        <div className="flex justify-center">
-            <div className="px-4 py-9 absolute top-0">
+        <div className="flex flex-col justify-center items-center h-screen">
+            <div className="px-4 py-9 w-full mb-auto">
                 <Input className="resize-none border-0 text-xl font-bold text-center" value={state.projectName} onChange={(e) => setState(prevState => ({ ...prevState, projectName: e.target.value }))} />
             </div>
-            <div className={"flex flex-col justify-center items-center w-lg h-lg p-10 bg-red-200"} >
+            <div className={"flex flex-col justify-center items-center w-lg h-lg p-10 min-w-[480px] mx-10 mb-auto"} style={{ backgroundColor: state.backgroundColor }}>
                 {state.showLogo === true && (
                     <div className="cursor-pointer" onClick={handleFile} >
                         <Avatar className={cn("w-20 h-20 mb-8")} >
