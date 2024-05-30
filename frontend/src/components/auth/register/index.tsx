@@ -16,6 +16,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
 
 const formSchema = z.object({
     type: z.string(),
@@ -28,7 +29,7 @@ const formSchema = z.object({
     password: z.string().min(8),
 })
 
-export default function ProfileForm() {
+export default function RegisterForm() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -45,7 +46,7 @@ export default function ProfileForm() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-center item-center space-y-8">
                 <FormField
                     control={form.control}
                     name="email"
@@ -53,7 +54,7 @@ export default function ProfileForm() {
                         <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                                <Input type="email" placeholder="your email" {...field} />
+                                <Input className={cn("border-none bg-white")} type="email" placeholder="your email" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -66,7 +67,7 @@ export default function ProfileForm() {
                         <FormItem>
                             <FormLabel>Password</FormLabel>
                             <FormControl>
-                                <Input type="password" placeholder="your password" {...field} />
+                                <Input className={cn("border-none bg-white")} type="password" placeholder="your password" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

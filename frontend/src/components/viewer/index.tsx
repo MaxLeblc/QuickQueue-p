@@ -44,7 +44,6 @@ export default function Viewer() {
                     <div className="cursor-pointer" onClick={handleFile} >
                         <Avatar className={cn("w-20 h-20 mb-8")} >
                             <AvatarImage src={state.logo} className={cn("object-cover")} />
-                            <AvatarFallback>CN</AvatarFallback>
                             <Input id="picture" type="file" ref={inputRef} className="hidden" onChange={handleLogo} />
                         </Avatar>
                     </div>
