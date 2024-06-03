@@ -1,5 +1,5 @@
 import ProjectToolsMenu from "@/components/toolsMenu/projectToolsMenu"
-import Viewer from "@/components/viewer"
+import Viewer from "@/container/viewer"
 
 type ViewType = "toolsMenu" | "viewer"
 
@@ -7,7 +7,7 @@ interface ProjectViewProps {
     view: ViewType
 }
 
-export default function ProjectView({ view }: ProjectViewProps) {
+export default function ProjectEditorView({ view }: ProjectViewProps) {
     switch (view) {
         case "toolsMenu":
             return <ProjectToolsMenu />

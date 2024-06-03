@@ -10,9 +10,9 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import Image from 'next/image'
-import RegisterForm from "@/components/auth/register"
-import LoginForm from "@/components/auth/login"
-import { UserContextProvider } from "@/components/context/userContext"
+import RegisterForm from "@/container/auth/register"
+import LoginForm from "@/container/auth/login"
+import { UserContextProvider } from "@/context/userContext"
 import { cn } from "@/lib/utils"
 
 export default function Auth() {

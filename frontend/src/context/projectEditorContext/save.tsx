@@ -80,29 +80,6 @@ export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
         showLogo: true,
     })
 
-    // fetch and save project here
-    // const saveState = async () => {
-    //     try {
-    //         const response = await axios.post("/api/save", state)
-    //         console.log("Axios response", response)
-
-    //     } catch (error) {
-    //         console.error(error)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     saveState()
-    // }, [state])
-
-    // const { data, error } = useSWR("/api/get", url => axios.get(url).then(res => res.data))
-
-    // useEffect(() => {
-    //     if (data) {
-    //         setState(data)
-    //     }
-    // }, [data])
-
     return (
         <ProjectEditorContext.Provider value={{
             // config,

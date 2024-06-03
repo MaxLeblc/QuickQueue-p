@@ -13,89 +13,92 @@ interface ColorState {
 }
 
 export default function ProjectToolsInput() {
-    const { config, save } = useProjectEditorContext()
+    const { state, setState } = useProjectEditorContext()
 
-    const handleChangeColor = debounce((key: keyof ColorState, value: string) => {
-        save(key, value)
+    const handleChangeColor = debounce((newColor: ColorState) => {
+        setState(prevState => ({
+            ...prevState,
+            ...newColor
+        }))
     }, 100)
 
     return (
         <div className="flex flex-col overflow-y-visible">
             <ColorInput
                 label="Background Color"
-                color={config.backgroundColor}
-                onChange={(value) => handleChangeColor("backgroundColor", value)}
+                color={state.backgroundColor}
+                onChange={(value) => handleChangeColor({ ...state, backgroundColor: value })}
             />
             <ColorInput
                 label="Title Color"
-                color={config.titleColor}
-                onChange={(value) => handleChangeColor("titleColor", value)}
+                color={state.titleColor}
+                onChange={(value) => handleChangeColor({ ...state, titleColor: value })}
             />
             <ColorInput
                 label="Text Color"
-                color={config.textColor}
-                onChange={(value) => handleChangeColor("textColor", value)}
+                color={state.textColor}
+                onChange={(value) => handleChangeColor({ ...state, textColor: value })}
             />
             <ColorInput
                 label="Placeholder Color"
-                color={config.placeholderColor}
-                onChange={(value) => handleChangeColor("placeholderColor", value)}
+                color={state.placeholderColor}
+                onChange={(value) => handleChangeColor({ ...state, placeholderColor: value })}
             />
             <ColorInput
                 label="Border Color"
-                color={config.inputBorderColor}
-                onChange={(value) => handleChangeColor("inputBorderColor", value)}
+                color={state.inputBorderColor}
+                onChange={(value) => handleChangeColor({ ...state, inputBorderColor: value })}
             />
             <SelectInput
                 label="Border Width"
                 defaultValue="1px"
                 options={["0px", "1px", "2px", "4px", "8px"]}
-                onChange={(value) => save("inputBorderWidth", value)}
+                onChange={(value) => setState(prevState => ({ ...prevState, inputBorderWidth: value }))}
             />
             <SelectInput
                 label="Border Radius"
                 defaultValue="0"
                 options={["0", "4px", "6px", "8px", "10px", "16px"]}
-                onChange={(value) => save("inputBorderRadius", value)}
+                onChange={(value) => setState(prevState => ({ ...prevState, inputBorderRadius: value }))}
             />
             <SelectInput
                 label="Hero Font"
                 defaultValue="inter"
                 options={["inter", "roboto", "raleway", "rubik", "lora"]}
-                onChange={(value) => save("heroFont", value)}
+                onChange={(value) => setState(prevState => ({ ...prevState, heroFont: value }))}
             />
             <SelectInput
                 label="Font Weight"
                 defaultValue="400"
                 options={["300", "400", "500", "700", "900"]}
-                onChange={(value) => save("heroFontWeight", value)}
+                onChange={(value) => setState(prevState => ({ ...prevState, heroFontWeight: value }))}
             />
             <TextareaInput
                 label="Hero Text"
-                value={config.heroText}
-                onChange={(e) => save("heroText", e.target.value)}
+                value={state.heroText}
+                onChange={(e) => setState(prevState => ({ ...prevState, heroText: e.target.value }))}
             />
             <SelectInput
                 label="Sub Font"
                 defaultValue="inter"
                 options={["inter", "roboto", "raleway", "rubik", "lora"]}
-                onChange={(value) => save("subFont", value)}
+                onChange={(value) => setState(prevState => ({ ...prevState, subFont: value }))}
             />
             <SelectInput
                 label="Font Weight"
                 defaultValue="400"
                 options={["300", "400", "500", "700", "900"]}
-                onChange={(value) => save("subFontWeight", value)}
+                onChange={(value) => setState(prevState => ({ ...prevState, subFontWeight: value }))}
             />
             <TextareaInput
                 label="Sub Text"
-                value={config.subText}
-                onChange={(e) => save("subText", e.target.value)}
+                value={state.subText}
+                onChange={(e) => setState(prevState => ({ ...prevState, subText: e.target.value }))}
             />
             <TextareaInput
                 label="Placeholder Text"
-                value={config.placeholderText}
-                onChange={(e) => save("placeholderText", e.target.value)}
+                value={state.placeholderText}
+                onChange={(e) => setState(prevState => ({ ...prevState, placeholderText: e.target.value }))}
             />
         </div>
     )

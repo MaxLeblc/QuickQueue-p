@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
-import { useProjectEditorContext } from "../context/projectEditorContext"
+import { useProjectEditorContext } from "../../context/projectEditorContext"
 
 export default function Viewer() {
     const inputRef = useRef<HTMLInputElement>(null)

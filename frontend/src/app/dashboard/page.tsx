@@ -1,9 +1,7 @@
-import { ProjectEditorProvider } from "@/components/context/projectEditorContext"
+import { ProjectEditorProvider } from "@/context/projectEditorContext"
 import ProjectFinder from "@/components/toolsMenu/projectFinder"
-import ProjectToolsMenu from "@/components/toolsMenu/projectToolsMenu"
-import Settings from "@/components/settings"
-import Viewer from "@/components/viewer"
-import ProjectView from "@/container/projectEditor"
+import Settings from "@/container/settings"
+import ProjectEditorView from "@/container/projectEditorView"
 
 export default function Dashboard() {
 
@@ -15,13 +13,11 @@ export default function Dashboard() {
                         <ul className="w-full h-screen bg-white flex flex-col items-center">
                             <Settings />
                             <ProjectFinder />
-                            {/* <ProjectToolsMenu /> */}
-                            <ProjectView view="toolsMenu" />
+                            <ProjectEditorView view="toolsMenu" />
                         </ul>
                     </div>
                     <div className="flex justify-center items-center w-full">
-                        {/* <Viewer /> */}
-                        <ProjectView view="viewer" />
+                        <ProjectEditorView view="viewer" />
                     </div>
                 </div>
             </div>
