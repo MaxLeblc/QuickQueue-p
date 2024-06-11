@@ -19,6 +19,12 @@ export default class HTTPCodesController {
         res.status(400).send({ error: error?.message })
     }
 
+    // 401 Unauthorized
+    protected unauthorized(res: any, error: any) {
+        this.logger(error)
+        res.status(401).send({ error: error?.message })
+    }
+
     // 404 Not Found
     protected notFound(res: any, error: any) {
         this.logger(error)

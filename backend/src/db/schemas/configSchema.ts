@@ -1,26 +1,9 @@
+import { ProjectSchema } from "./projectSchema"
 import { integer, text, boolean, serial, varchar, pgTable } from "drizzle-orm/pg-core"
-import { relations } from "drizzle-orm"
 
-export const user = pgTable("user", {
+export const ConfigSchema = pgTable("config", {
     id: serial("id").primaryKey(),
-    email: text("email").unique().notNull(),
-    password: text("password").notNull(),
-    plan: boolean("plan").default(false).notNull(),
-    done: boolean("done").default(false).notNull(),
-    createdAt: text("createdAt").default("now()").notNull(),
-    updatedAt: text("updatedAt").default("now()").notNull(),
-})
-
-export const project = pgTable("project", {
-    id: serial("id").primaryKey(),
-    name: text("name").notNull(),
-    tracking: text("tracking"),
-    createdAt: text("createdAt").default("now()").notNull(),
-    updatedAt: text("updatedAt").default("now()").notNull(),
-    userId: integer("user_id").references(() => user.id),
-})
-
-export const config = pgTable("config", {
+    projectId: integer("project_id").references(() => ProjectSchema.id),
     backgroundColor: text("backgroundColor").default("#E3E3E3").notNull(),
     titleColor: text("titleColor").default("#000000").notNull(),
     textColor: text("textColor").default("#000000").notNull(),
@@ -47,12 +30,3 @@ export const config = pgTable("config", {
     logo: varchar("logo").notNull(),
     showLogo: boolean("showLogo").default(true).notNull(),
 })
-
-export const userRelations = relations(user, ({ many }) => ({
-    projects: many(project)
-}))
-
-export const projectRelations = relations(project, ({ one }) => ({
-    userId: one(user, "id"),
-    config: one(config),
-}))

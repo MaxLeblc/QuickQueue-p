@@ -1,5 +1,5 @@
 import { User } from '../../domains/User'
-import { IUserRepository } from '../../repositories/UserRepository'
+import { IUserRepository } from '../../repositories/user.repository'
 
 
 export class UpdateUserUseCase {

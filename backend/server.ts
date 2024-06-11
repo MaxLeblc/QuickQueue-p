@@ -3,7 +3,7 @@ import express from "express"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser"
 import cors from "cors"
-import appRouter from "./src/view/routes"
+import appRouter from "./src/core/routes"
 
 dotenv.config()
 

@@ -1,5 +1,5 @@
 import { Project } from "../../domains/Project"
-import { IProjectRepository } from "../../repositories/ProjectRepository"
+import { IProjectRepository } from "../../repositories/project.repository"
 
 export class UpdateProjectUseCase {
     private projectRepository: IProjectRepository

@@ -1,21 +1,19 @@
 import { type Response } from "express"
 import jwt from "jsonwebtoken"
+import HTTPCodesController from "../controllers/HTTPCodes.controller"
 
-export class IsConnectedMiddleware {
+export class IsConnectedMiddleware extends HTTPCodesController {
     execute(req: any, res: Response, next: any): void {
         try {
             const { authToken } = req.cookies
             if (!authToken) {
-                // Error 401(unauthorized)
-                res.status(401).send({ error: "No Token" })
-                return
+                return this.unauthorized(res, { error: "No Token" })
             }
 
             const jwtSecret = process.env?.JWT_SECRET ?? ""
 
             if (!jwtSecret) {
-                res.status(500).send({ error: "JWT Secret is not defined" })
-                return
+                return this.internalServerError(res, { error: "JWT Secret is not defined" })
             }
 
             req.user = jwt.verify(authToken, jwtSecret)
@@ -23,8 +21,7 @@ export class IsConnectedMiddleware {
             next()
 
         } catch (error: any) {
-            console.log(error)
-            res.status(401).send({ error: error.message })
+            return this.unauthorized(res, error)
         }
     }
 }
