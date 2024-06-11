@@ -1,49 +1,8 @@
 "use client"
 
 import React, { ReactNode, createContext, useContext, useReducer } from "react"
-
-interface ProjectEditorContextType {
-    config: {
-        projectName: string;
-        backgroundColor: string;
-        titleColor: string;
-        textColor: string;
-        placeholderColor: string;
-        inputBorderColor: string;
-        inputBorderWidth: string;
-        inputBorderRadius: string;
-        heroFont: string;
-        heroFontWeight: string;
-        heroText: string;
-        subFont: string;
-        subFontWeight: string;
-        subText: string;
-        placeholderText: string;
-        buttonColor: string;
-        buttonBorderColor: string;
-        buttonTextColor: string;
-        buttonBorderWidth: string;
-        buttonBorderRadius: string;
-        buttonFont: string;
-        buttonFontWeight: string;
-        buttonText: string;
-        successMessage: string;
-        logo: string;
-        showLogo: boolean;
-    };
-    // setState: React.Dispatch<React.SetStateAction<ProjectEditorContextType["config"]>>
-    save: (key: string, value: any) => void
-}
-
-const ProjectEditorContext = createContext<ProjectEditorContextType | undefined>(undefined)
-
-export const useProjectEditorContext = () => {
-    const context = useContext(ProjectEditorContext)
-    if (!context) {
-        throw new Error("useProjectEditorContext must be used within a ProjectEditor")
-    }
-    return context;
-}
+import { ProjectEditorContextType } from "@/types/ProjectEditorContextType"
+import { saveProjectData } from "@/api/saveProjectData"
 
 const initialState = {
     projectName: "Project Name",
@@ -73,6 +32,15 @@ const initialState = {
     logo: "https://github.com/shadcn.png",
     showLogo: true,
 }
+const ProjectEditorContext = createContext<ProjectEditorContextType | undefined>(undefined)
+
+export const useProjectEditorContext = () => {
+    const context = useContext(ProjectEditorContext)
+    if (!context) {
+        throw new Error("useProjectEditorContext must be used within a ProjectEditor")
+    }
+    return context
+}
 
 function reducer(state: ProjectEditorContextType["config"], action: { type: string, key: string, value: any }) {
     switch (action.type) {
@@ -84,14 +52,19 @@ function reducer(state: ProjectEditorContextType["config"], action: { type: stri
 }
 
 interface ProjectEditorProps {
-    children: ReactNode;
+    children: ReactNode
 }
 
 export const ProjectEditorProvider = ({ children }: ProjectEditorProps) => {
     const [config, dispatch] = useReducer(reducer, initialState)
 
-    const save = (key: string, value: any) => {
-        dispatch({ type: "update", key, value })
+    const save = async (key: string, value: any) => {
+        try {
+            dispatch({ type: "update", key, value })
+            await saveProjectData({ ...config, [key]: value })
+        } catch (error) {
+            console.error("Failed to save project data", error)
+        }
     }
 
     return (

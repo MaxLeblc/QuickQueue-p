@@ -21,7 +21,7 @@ export default function Auth() {
     return (
         <UserContextProvider>
             <div className="w-full h-screen flex justify-center items-center">
-                <Card className={cn("bg-custom-amber")}>
+                <Card className={cn("bg-gray-200")}>
                     <CardHeader className={("flex justify-center items-center text-xl")}>
                         <Image
                             src="/favicon.ico"
@@ -29,16 +29,16 @@ export default function Auth() {
                             height={40}
                             alt="QuickQueue Logo"
                         />
-                        <CardTitle  >{isRegister ? "Login" : "Register"}</CardTitle>
+                        <CardTitle  >{isRegister ? "Register" : "Login"}</CardTitle>
                     </CardHeader>
                     <CardContent>
                         {isRegister ? <RegisterForm /> : <LoginForm />}
                     </CardContent>
                     <CardFooter className={cn("cursor-pointer font-medium")} >
                         {isRegister ?
-                            <p onClick={() => setIsRegister(!isRegister)}>Don't have an account? <span className="underline underline-offset-1">Register</span></p>
-                            :
                             <p onClick={() => setIsRegister(!isRegister)}>Already have an account? <span className="underline underline-offset-1">Login</span></p>
+                            :
+                            <p onClick={() => setIsRegister(!isRegister)}>Don't have an account? <span className="underline underline-offset-1">Register</span></p>
                         }
                     </CardFooter>
                 </Card>

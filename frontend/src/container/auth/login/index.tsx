@@ -3,7 +3,8 @@
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
+import axios from "axios"
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -14,21 +15,18 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
-import { cn } from "@/lib/utils"
 import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
+import { toast } from "sonner"
 
 const formSchema = z.object({
-    type: z.string(),
-    label: z.string(),
-    name: z.string(),
-    placeholder: z.string(),
-    required: z.boolean(),
-    options: z.array(z.string()),
     email: z.string().email(),
     password: z.string().min(8),
 })
 
 export default function LoginForm() {
+    const router = useRouter()
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -37,10 +35,10 @@ export default function LoginForm() {
         }
     })
 
-    // const router = useRouter()
     async function onSubmit(data: z.infer<typeof formSchema>) {
-        console.log(data)
-        // await router.push("/auth/dashboard")
+        await axios.post(`/auth`, data)
+            .then(() => router.push("/dashboard"))
+        toast.success("You are now logged in!")
     }
 
     return (
@@ -72,7 +70,7 @@ export default function LoginForm() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Login</Button>
             </form>
         </Form>
     )
