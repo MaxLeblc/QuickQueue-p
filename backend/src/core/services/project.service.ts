@@ -1,4 +1,4 @@
-import { IProjectRepository } from "../repositories/project.repository"
+import IProjectRepository from "../repositories/project.repository"
 import { IProject } from "../../types/IProject"
 
 export default class ProjectService {
@@ -9,31 +9,31 @@ export default class ProjectService {
     }
 
     public async getProjectById(projectId: string): Promise<IProject | null> {
-        return this.projectRepository.findProjectById(projectId)
+        return await this.projectRepository.findProjectById(projectId)
     }
 
     public async getProjectByName(projectName: string): Promise<IProject | null> {
-        return this.projectRepository.findProjectByName(projectName)
+        return await this.projectRepository.findProjectByName(projectName)
     }
 
-    public async createProject(userId: string, project: IProject): Promise<IProject> {
+    public async createProject(userId: string, projectData: IProject): Promise<IProject> {
         const projectWithAuthor = {
-            ...project,
+            ...projectData,
             authorId: userId
         }
         return this.projectRepository.createProject(projectWithAuthor)
     }
 
-    public async updateProject(projectId: string, project: IProject): Promise<IProject> {
+    public async updateProject(projectId: string, projectData: IProject): Promise<IProject> {
         const existingProject = await this.projectRepository.findProjectById(projectId)
         if (!existingProject) {
             throw new Error("Project not found")
         }
         const updatedProject = {
             ...existingProject,
-            ...project
+            ...projectData
         }
-        return this.projectRepository.updateProject(updatedProject)
+        return await this.projectRepository.updateProject(updatedProject)
     }
 
     public async deleteProject(projectId: string): Promise<void> {
@@ -41,6 +41,6 @@ export default class ProjectService {
         if (!project) {
             throw new Error("Project not found")
         }
-        return this.projectRepository.deleteProject(projectId)
+        return await this.projectRepository.deleteProject(projectId)
     }
 }

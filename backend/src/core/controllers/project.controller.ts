@@ -2,7 +2,6 @@ import HTTPCodesController from "./HTTPCodes.controller"
 import ProjectService from "../services/project.service"
 
 export default class ProjectController extends HTTPCodesController {
-
     private projectService: ProjectService
 
     constructor(projectService: ProjectService) {

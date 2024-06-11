@@ -1,6 +1,7 @@
 import db from '../../../db/drizzle'
 import { projectSchema } from '../../../db/schemas'
 import IProjectRepository from '../project.repository'
+import { IProject } from '../../../types/IProject'
 
 export default class ProjectDrizzleRepository implements IProjectRepository {
     public async findProjectById(projectId: string): Promise<any | null> {
@@ -19,11 +20,16 @@ export default class ProjectDrizzleRepository implements IProjectRepository {
             .execute()
     }
 
-    public async createProject(projectData: any): Promise<any> {
-        return null
+    public async createProject(projectData: IProject): Promise<any> {
+        return await db
+            .insert()
+            .into(projectSchema)
+            .values(projectData)
+            .returning("*")
+            .execute()
     }
 
-    public async updateProject(projectData: any): Promise<any> {
+    public async updateProject(projectData: IProject): Promise<any> {
         const { id, ...updateData } = projectData
         return await db
             .update(projectSchema)
